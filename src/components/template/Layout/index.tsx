@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from '../../molecules/Navbar';
-import Footer from '../../molecules/Footer';
+import Navbar from '../../organism/Navbar';
+// import Footer from '../../organism/Footer';
 
 const Layout = () => {
   return (
     <>
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

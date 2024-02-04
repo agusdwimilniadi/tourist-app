@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+section {
+  @apply md:px-28 px-5;
+}

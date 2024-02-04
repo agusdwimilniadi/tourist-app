@@ -4,8 +4,9 @@ import InputForm from '../../../components/atoms/InputForm';
 import AuthLayout from '../../../components/template/AuthLayout';
 import { axiosInstance } from '../../../utils/axiosInstance';
 import { IAPIResponse } from '../../../utils/interface';
-import { useSignIn } from 'react-auth-kit';
+import { useIsAuthenticated, useSignIn } from 'react-auth-kit';
 import toast from 'react-hot-toast';
+import { Navigate } from 'react-router-dom';
 
 interface IAPILogin {
   $id: string;
@@ -16,6 +17,7 @@ interface IAPILogin {
 }
 const Register = () => {
   const signIn = useSignIn();
+  const isLoggedIn = useIsAuthenticated();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -62,6 +64,9 @@ const Register = () => {
       }
     },
   });
+  if (isLoggedIn()) {
+    return <Navigate to="/" replace />;
+  }
   return (
     <AuthLayout>
       <form
