@@ -6,8 +6,12 @@ import Image from '../../components/atoms/Images';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '../../utils/axiosInstance';
 
+interface UserData {
+  avatar: string;
+}
+
 const Profile = () => {
-  const [dataUser, setDataUser] = useState(null);
+  const [dataUser, setDataUser] = useState<UserData | null>(null);
 
   const user = useAuthUser();
   const authHeader = useAuthHeader();
@@ -25,6 +29,7 @@ const Profile = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getData();
   }, []);
@@ -39,7 +44,7 @@ const Profile = () => {
       <section className="text-center">
         {dataUser && (
           <Image
-            src={dataUser?.avatar || '#'}
+            src={dataUser.avatar || '#'}
             alt="img-tourist"
             className="w-40 rounded-full mx-auto mb-5"
           />
