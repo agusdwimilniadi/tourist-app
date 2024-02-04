@@ -3,20 +3,11 @@ import Button from '../../../components/atoms/Button';
 import InputForm from '../../../components/atoms/InputForm';
 import AuthLayout from '../../../components/template/AuthLayout';
 import { axiosInstance } from '../../../utils/axiosInstance';
-import { IAPIResponse } from '../../../utils/interface';
-import { useIsAuthenticated, useSignIn } from 'react-auth-kit';
+import { useIsAuthenticated } from 'react-auth-kit';
 import toast from 'react-hot-toast';
 import { Navigate } from 'react-router-dom';
 
-interface IAPILogin {
-  $id: string;
-  Id: string;
-  Name: string;
-  Email: string;
-  Token: string;
-}
 const Register = () => {
-  const signIn = useSignIn();
   const isLoggedIn = useIsAuthenticated();
   const formik = useFormik({
     initialValues: {
@@ -28,18 +19,6 @@ const Register = () => {
       try {
         await axiosInstance
           .post('/authaccount/registration', values)
-          .then((res: { data: IAPIResponse<IAPILogin> }) => {
-            signIn({
-              authState: {
-                id: res.data?.data.Id,
-                name: res.data?.data.Name,
-                email: res.data?.data.Email,
-              },
-              expiresIn: 3600,
-              token: res.data?.data.Token,
-              tokenType: 'Bearer',
-            });
-          })
           .then(() => {
             toast('Register success', {
               icon: '👏',
