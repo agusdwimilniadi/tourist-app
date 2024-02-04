@@ -65,7 +65,7 @@ const Register = () => {
     },
   });
   if (isLoggedIn()) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
   return (
     <AuthLayout>
