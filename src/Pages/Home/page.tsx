@@ -1,12 +1,19 @@
-import { useSignOut } from 'react-auth-kit';
+import HeaderText from '../../components/atoms/HeaderText';
+import AddTourist from '../../components/organism/AddTourist';
+import Jumbotron from '../../components/organism/Jumbotron';
+import ListTourist from '../../components/organism/ListTourist';
 
 const Home = () => {
-  const signOut = useSignOut();
   return (
-    <div>
-      <h1>Home</h1>
-      <button onClick={() => signOut()}>Logout</button>
-    </div>
+    <>
+      <Jumbotron
+        imgUrl="/assets/images/img-jumbotron.png"
+        text="Welcome to TouristApp"
+      />
+      <HeaderText text="Tourist Data" />
+      <AddTourist />
+      <ListTourist />
+    </>
   );
 };
 

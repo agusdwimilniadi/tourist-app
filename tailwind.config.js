@@ -10,6 +10,7 @@ export default {
         },
         secondary: '#F5F6F8',
         danger: '#E83232',
+        info: '#B9B9B9',
       },
     },
     fontFamily: {

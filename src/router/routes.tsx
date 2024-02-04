@@ -6,6 +6,8 @@ import Layout from '../components/template/Layout';
 import RequireAuth from '../utils/RequireAuth';
 import Login from '../Pages/Auth/Login/page';
 import Register from '../Pages/Auth/Register/page';
+import Profile from '../Pages/Profile';
+import Tourism from '../Pages/Tourism';
 
 export const router = createBrowserRouter([
   {
@@ -21,10 +23,18 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/secure',
+        path: '/profile',
         element: (
           <RequireAuth>
-            <h1>secure</h1>
+            <Profile />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/tourism/:id',
+        element: (
+          <RequireAuth>
+            <Tourism />
           </RequireAuth>
         ),
       },
